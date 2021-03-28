@@ -1,0 +1,80 @@
+﻿@{
+    Layout = "_ConfigurePlugin";
+}
+
+@model Nop.Plugin.Misc.Sms.Models
+
+
+@await Component.InvokeAsync("StoreScopeConfiguration")
+
+<form asp-controller="SmsClickatell" asp-action="Configure" method="post">
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>
+                    To receive an SMS notification when an order is placed from your store you need to follow a few simple steps, which are shown below:<br />
+                    1. Register for a <a href="http://www.clickatell.com" target='_blank'>Clickatell account</a><br />
+                    Clickatell works with all countries and includes 100 free credits so you can test SMS notifications.<br />
+                    2. Set up new SOAP API. <br />
+                    3. Fill in the form below with your Clickatell account details, including the number you want the notification messages to be sent to.<br />
+                    Now when you receive a new order, an SMS text message will be sent to the number you enter below automatically.
+                </p>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="Enabled_OverrideForStore" asp-input="Enabled" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="Enabled" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Enabled" />
+                        <span asp-validation-for="Enabled"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="ApiKey" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ApiKey" />
+                        <span asp-validation-for="ApiKey"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="PhoneNumber_OverrideForStore" asp-input="PhoneNumber" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="PhoneNumber" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="PhoneNumber" />
+                        <span asp-validation-for="PhoneNumber"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-9 col-md-offset-3">
+                        <input type="submit" name="save" class="btn btn-primary" value="@T("Admin.Common.Save")" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @T("Plugins.Misc.Sms.SendTest.Hint")
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="TestMessage" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="TestMessage" />
+                        <span asp-validation-for="TestMessage"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-9 col-md-offset-3">
+                        <input type="submit" name="test" class="btn btn-primary" value="@T("Plugins.Misc.Sms.SendTest")" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

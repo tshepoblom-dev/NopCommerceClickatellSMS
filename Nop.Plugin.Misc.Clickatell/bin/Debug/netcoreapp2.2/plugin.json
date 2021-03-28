@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Misc",
+  "FriendlyName": "Clickatell One API",
+  "SystemName": "Misc.Clickatell",
+  "Version": "1.00",
+  "SupportedVersions": [ "4.10", "4.20" ],
+  "Author": "Tshepo Blom",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Misc.Clickatell.dll",
+  "Description": "Sends SMS and WhatsApp notifications using Clickatell's One API service"
+}
